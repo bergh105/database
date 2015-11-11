@@ -20,7 +20,10 @@ public:
 		right = NULL;
 	}
 
-	~TreeNode() {}
+	~TreeNode() {
+		delete left;
+		delete right;
+	}
 };
 
 template<typename T>
@@ -34,7 +37,7 @@ public:
 	}
 
 	~BinarySearchTree() {
-		//do this
+		delete root;
 	}
 
 	int size;
