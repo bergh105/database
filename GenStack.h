@@ -13,7 +13,6 @@ class GenStack {
 		T pop();
 		T peak();
 
-		//methods not part of Stack interface, but helpful to have
 		bool isFull();
 		bool isEmpty();
 
