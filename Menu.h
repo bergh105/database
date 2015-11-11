@@ -1,14 +1,14 @@
 #include <iostream>
-//#include "student.h"
-//#include "faculty.h"
+#include "Student.h"
+#include "Faculty.h"
 
 using namespace std;
 
-class menu
+class Menu
 {
 	public:
-		menu();
-		~menu();
+		Menu();
+		~Menu();
 		int input();
 		void printOptions();
 		int UserInput();
