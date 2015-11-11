@@ -19,7 +19,7 @@ int Menu :: input()
 	string userIn;
 	int i;
 	getline(cin,userIn);
-	i = atoi (userIn);
+	i = atoi (userIn.c_str);
 	return i;
 
 }
