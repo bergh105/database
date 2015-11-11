@@ -1,19 +1,20 @@
 #include <iostream>
 #include <stdlib.h>
+#include "Menu.h"
 //and all other stuff to be named
 
 using namespace std;
-menu :: menu()
+Menu :: Menu()
 {
 
 }
-menu :: ~menu()
+Menu :: ~Menu()
 {
 
 }
 
 
-int menu :: input()
+int Menu :: input()
 {
 	string userIn;
 	int i;
@@ -23,7 +24,7 @@ int menu :: input()
 
 }
 
-void menu :: printOptions()
+void Menu :: printOptions()
 {
 	cout << " 1. Print all student and their information " << endl;
 	cout << " 2. Print all Faculty and their information " << endl;
@@ -43,7 +44,7 @@ void menu :: printOptions()
 }
 
 
-int menu :: UserInputs()
+int Menu :: UserInputs()
 {
 	cout << "choose an action from the above list" << endl;
 	int i = input();
@@ -56,7 +57,7 @@ int menu :: UserInputs()
 
 }
 
-void execute()
+void Menu :: execute()
 {
 
 	// each case refers to a different action, call appropriate methods
