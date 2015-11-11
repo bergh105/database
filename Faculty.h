@@ -1,6 +1,6 @@
 #ifndef FACULTY_H_
 #define FACULTY_H_
-#include "listnode.h"
+#include "ListNode.h"
 #include <string>
 
 using namespace std;
