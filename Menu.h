@@ -11,7 +11,7 @@ class Menu
 		~Menu();
 		int input();
 		void printOptions();
-		int UserInput();
+		int UserInputs();
 		void execute();
 
 };
