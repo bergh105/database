@@ -10,6 +10,15 @@ public:
 	DLinkedList<int>* adviseeList;
 
 	Faculty() {}
+	
+	Faculty(string n; int i; string l; string d; DLinkedList<int>* a) {
+		name = n;
+		ID = i;
+		level = l;
+		department = d;
+		adviseeList = a;
+	}
+	
 	~Faculty() {}
 
 	//accessors
