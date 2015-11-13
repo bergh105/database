@@ -14,6 +14,15 @@ public:
 		major = "";
 		advisor = 0;
 	}
+	
+	Student(string n; int id; double g; string l; string m; int a) {
+		name = n;
+		id = id;
+		GPA = g;
+		level = l;
+		major = m;
+		advisor = a;
+	}
 
 	~Student() {}
 
