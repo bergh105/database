@@ -5,7 +5,9 @@ using namespace std
 
 Database :: Database()
 {
-	// Creates the BST
+	studentTable = new BinarySearchTree<Student*>();
+
+	facultyTable = new BinarySearchTree<Faculty*>();
 }
 
 Database :: ~Database()
@@ -36,6 +38,11 @@ int Database :: FindFac(int facID)
 int Database :: AddStu()
 {
 	//creates a new student and adds them to the BST
+	Student *s = new Student("Adrienne", 1766765, 3.8, "Junior", "CIS", 1);
+	studentTable->add(s);
+	cout << "hey (after add)" << endl; //will add s, but will not make s the root.............
+	studentTable->print();
+	return 1;
 	//Rollback
 }
 
