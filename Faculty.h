@@ -1,25 +1,26 @@
 #ifndef FACULTY_H_
 #define FACULTY_H_
-#include "ListNode.h"
+#include "listnode.h"
 #include <string>
 
 using namespace std;
+
 
 class Faculty {
 public:	
 	DLinkedList<int>* adviseeList;
 
-	Faculty() {}
-	
-	Faculty(string n; int i; string l; string d; DLinkedList<int>* a) {
+	Faculty();
+
+	Faculty(string n, int i, string l, string d, DLinkedList<int>* a) {
 		name = n;
 		ID = i;
 		level = l;
 		department = d;
 		adviseeList = a;
 	}
-	
-	~Faculty() {}
+
+	~Faculty();
 
 	//accessors
 	string getName();
@@ -37,7 +38,10 @@ public:
 	void deleteFromAdviseeList(int id);
 
 	//operator overloaders
-	bool operator <(const Faculty& fac);
+	bool operator <(Faculty *fac); //const Faculty& fac
+	bool operator >(Faculty *fac);
+	friend ostream& operator <<(ostream& os, Faculty *obj); 
+
 private:
 	int ID;
 	string name;
