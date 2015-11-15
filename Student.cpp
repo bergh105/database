@@ -32,41 +32,43 @@ void Student::setName(string n) {
 	name = n;
 }
 
-int Student::setID(int id) {
+void Student::setID(int id) {
 	ID = id;
 }
 
-double Student::setGPA(double gpa) {
+void Student::setGPA(double gpa) {
 	GPA = gpa;
 }
 
-string Student::setLevel(string l) {
+void Student::setLevel(string l) {
 	level = l;
 }
 
-string Student::setMajor(string m) {
+void Student::setMajor(string m) {
 	major = m;
 }
 
-int Student::setAdvisor(int a) {
+void Student::setAdvisor(int a) {
 	advisor = a;
 }
 
-bool Student::operator <(const Student& s) {
-	if(ID < s.ID) {
+//Operator Overloaders:
+bool Student::operator <(Student *s) {
+	if(ID < s->ID) {
 		return true;
 	}
 	return false;
 }
 
-bool Student::operator >(const Student& s) {
-	if(ID > s.ID) {
+bool Student::operator >(Student *s) {
+	if(ID > s->ID) {
 		return true;
 	}
 	return false;
 }
 
-ostream& Student::operator<<(ostream& os, const T& obj) {
-	//write obj to stream
+ostream& operator<<(ostream& os, Student *obj) { 
+	cout << obj->name << "\n" << obj->ID << "\n" << obj->GPA << "\n" << obj->level << "\n" << obj->major << "\n" << obj->advisor << endl;
 	return os;
 }
+//doesn't actually work..
