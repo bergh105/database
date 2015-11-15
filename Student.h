@@ -14,10 +14,10 @@ public:
 		major = "";
 		advisor = 0;
 	}
-	
-	Student(string n; int id; double g; string l; string m; int a) {
+
+	Student(string n, int id, double g, string l, string m, int a) {
 		name = n;
-		id = id;
+		ID = id;
 		GPA = g;
 		level = l;
 		major = m;
@@ -42,8 +42,10 @@ public:
 	void setMajor(string m);
 	void setAdvisor(int a);
 
-	//overloaders
-	//operator: ostream& operator<<(ostream& os, const T& obj); come back to this (compiler doesnt like the T)
+	//operator overloaders
+	bool operator <(Student *s);
+	bool operator >(Student *s);
+	friend ostream& operator<<(ostream& os, Student *obj); //const Student& obj
 
 private:
 	string name;
