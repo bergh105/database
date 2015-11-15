@@ -9,6 +9,10 @@ class Database
 {
 	Database();
 	~Database();
+	
+	BinarySearchTree<Student*> *studentTable;
+	BinarySearchTree<Faculty*> *facultyTable;
+	
 	void PrintAllStu();
 	void PrintAllFac();
 	int FindStu(int iD);
