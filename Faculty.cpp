@@ -40,24 +40,23 @@ void Faculty::addToAdviseeList(int id) {
 	adviseeList->insertBack(id);
 }
 
-/*
-Operator Overloaders:
-bool Faculty::operator <(const Faculty& fac) {
-	if(ID < fac.ID) {
+//Operator Overloaders:
+bool Faculty::operator <(Faculty *fac) {
+	if(ID < fac->ID) {
 		return true;
 	}
 	return false;
 }
 
-bool Faculty::operator >(const Faculty& fac) {
-	if(ID > fac.ID) {
+bool Faculty::operator >(Faculty *fac) {
+	if(ID > fac->ID) {
 		return true;
 	}
 	return false;
 }
 
-ostream& Faculty::operator<<(ostream& os, const T& obj) {
-	//write obj to stream
+ostream& operator<<(ostream& os, Faculty *obj) {
+	cout << obj->name << "\n" << obj->ID << "\n" << obj->level << "\n" << obj->department << endl;
 	return os;
 }
-*/
+//doesnt actually work..
