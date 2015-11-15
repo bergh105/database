@@ -37,7 +37,7 @@ public:
 	}
 
 	~BinarySearchTree() {
-		delete root;
+		delete root; 
 	}
 
 	int size;
@@ -49,7 +49,7 @@ public:
 	T getMin();
 	T getMax();
 	void print();
-	void printHelper(TreeNode<T> node);
+	void printHelper(TreeNode<T> *node);
 
 };
 
@@ -74,16 +74,17 @@ bool BinarySearchTree<T>::contains(T d) {
 
 template <typename T>
 void BinarySearchTree<T>::print() {
+	cout << "inside print" << endl;
 	if(root != NULL)
 		printHelper(root);
 }
 
 template <typename T>
-void BinarySearchTree<T>::printHelper(TreeNode<T> node) {
+void BinarySearchTree<T>::printHelper(TreeNode<T> *node) {
 	if(node->left != NULL)
 		printHelper(node->left);
 	if(node != NULL)
-		cout << node->data << endl;
+		cout << "data here: " << node->data << endl;
 	if(node->right != NULL)
 		printHelper(node->right);
 }
@@ -110,12 +111,17 @@ template<typename T>
 void BinarySearchTree<T>::add(T d) {
 	size++;
 	addHelper(d, root);
+	cout << root->data << endl; //does not think root exists....
 }
 
 template <typename T>
 void BinarySearchTree<T>::addHelper(T d, TreeNode<T> *n) {
-	if(n == 0) {
+	if(n == NULL) {
 		n = new TreeNode<T>(d);
+		cout << "n created" << endl;
+
+		cout << n->data->getName() << endl;
+		//n exists but root does not....
 	}
 	else if(d > n->data) {
 		addHelper(d, n->right);
