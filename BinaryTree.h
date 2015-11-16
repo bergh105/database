@@ -42,13 +42,14 @@ public:
 
 	int size;
 	bool contains(T d);
-	T search(int d)
+	int search(int d);
 	void add(T d);
 	void addHelper(T d, TreeNode<T> *n);
 	bool remove(T d);
 	TreeNode<T>* getSuccessor(TreeNode<T>* d);
 	T getMin();
 	T getMax();
+	int getSize();
 	void print();
 	void printHelper(TreeNode<T> *node);
 
@@ -72,6 +73,7 @@ bool BinarySearchTree<T>::contains(T d) {
 	}
 	return containsD;
 }
+
 template <typename T>
 T BinarySearchTree<T>::search(int d) 
 {
@@ -129,6 +131,12 @@ T BinarySearchTree<T>::getMax() {
 		current	= current->right;
 	}
 	return current->data;
+}
+
+template <template T>
+int BinarySearchTree<T>::getSize()
+{
+	return size;
 }
 
 template<typename T>
