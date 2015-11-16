@@ -42,6 +42,7 @@ public:
 
 	int size;
 	bool contains(T d);
+	T search(int d)
 	void add(T d);
 	void addHelper(T d, TreeNode<T> *n);
 	bool remove(T d);
@@ -74,6 +75,7 @@ bool BinarySearchTree<T>::contains(T d) {
 template <typename T>
 T BinarySearchTree<T>::search(int d) 
 {
+	foundNode = NULL;
 	TreeNode<T> *current = root;
 	while(current != NULL) {
 		if (d > current->data.getID())
@@ -86,10 +88,11 @@ T BinarySearchTree<T>::search(int d)
 		}	
 		else 
 		{
+			current = foundNode;
 			break;
 		}
 	}
-	return current; 
+	return foundNode; 
 
 }
 
