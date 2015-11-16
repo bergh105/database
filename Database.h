@@ -7,23 +7,24 @@ using namespace std;
 
 class Database
 {
-	Database();
-	~Database();
+	Public:
+		Database();
+		~Database();
+		
+		BinarySearchTree<Student*> *studentTable;
+		BinarySearchTree<Faculty*> *facultyTable;
 	
-	BinarySearchTree<Student*> *studentTable;
-	BinarySearchTree<Faculty*> *facultyTable;
-	
-	void PrintAllStu();
-	void PrintAllFac();
-	int FindStu(int iD);
-	int FindFac(int iD);
-	int AddStu();
-	int DeleteStu(int iD);
-	int AddFac();
-	int DeleteFac(int iD);
-	int ChangeStuAdvisor(int stuID, int facID);
-	int RemoveAdvisee(int stuID, int facID)
-	int Rollback();
-	int Exit();
+		void PrintAllStu();
+		void PrintAllFac();
+		int FindStu(int iD);
+		int FindFac(int iD);
+		int AddStu();
+		int DeleteStu(int iD);
+		int AddFac();
+		int DeleteFac(int iD);
+		int ChangeStuAdvisor(int stuID, int facID);
+		int RemoveAdvisee(int stuID, int facID)
+		int Rollback();
+		int Exit();
 
 };
