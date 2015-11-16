@@ -8,7 +8,7 @@ using namespace std;
 
 int main() {
 
-	cout << "Here we have the main function." << endl;
+	cout << "Here see a main method in its natural habitat." << endl;
 
 	Student *s = new Student();
 
