@@ -71,6 +71,27 @@ bool BinarySearchTree<T>::contains(T d) {
 	}
 	return containsD;
 }
+template <typename T>
+T BinarySearchTree<T>::search(int d) 
+{
+	TreeNode<T> *current = root;
+	while(current != NULL) {
+		if (d > current->data.getID())
+		{	
+			current = current -> right;
+		}	
+		else if(d < current->data.getID())
+		{
+			current = current -> left;
+		}	
+		else 
+		{
+			break;
+		}
+	}
+	return current; 
+
+}
 
 template <typename T>
 void BinarySearchTree<T>::print() {
