@@ -43,6 +43,7 @@ public:
 	void setAdvisor(int a);
 
 	//operator overloaders
+	bool operator =(Student *s);
 	bool operator <(Student *s);
 	bool operator >(Student *s);
 	friend ostream& operator<<(ostream& os, Student *obj); //const Student& obj
