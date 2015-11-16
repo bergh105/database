@@ -38,6 +38,7 @@ public:
 	void deleteFromAdviseeList(int id);
 
 	//operator overloaders
+	bool operator =(Faculty *fac);
 	bool operator <(Faculty *fac); //const Faculty& fac
 	bool operator >(Faculty *fac);
 	friend ostream& operator <<(ostream& os, Faculty *obj); 
