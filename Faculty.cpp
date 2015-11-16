@@ -41,6 +41,14 @@ void Faculty::addToAdviseeList(int id) {
 }
 
 //Operator Overloaders:
+bool Faculty::operator =(Faculty *fac) 
+{
+	if(ID = fac->ID)
+	{
+		return true;
+	}
+	return false;
+}
 bool Faculty::operator <(Faculty *fac) {
 	if(ID < fac->ID) {
 		return true;
