@@ -44,7 +44,7 @@ public:
 	bool contains(T d);
 	int search(int d);
 	void add(T d);
-	void addHelper(T d, TreeNode<T> *n);
+	void addHelper(T d, TreeNode<T>*& n);
 	bool remove(T d);
 	TreeNode<T>* getSuccessor(TreeNode<T>* d);
 	T getMin();
@@ -147,7 +147,7 @@ void BinarySearchTree<T>::add(T d) {
 }
 
 template <typename T>
-void BinarySearchTree<T>::addHelper(T d, TreeNode<T> *n) {
+void BinarySearchTree<T>::addHelper(T d, TreeNode<T>*& n) {
 	if(n == NULL) {
 		n = new TreeNode<T>(d);
 		cout << "n created" << endl;
