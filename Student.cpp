@@ -53,6 +53,14 @@ void Student::setAdvisor(int a) {
 }
 
 //Operator Overloaders:
+bool Student::operator =(Student *s) 
+{
+	if(ID = s->ID)
+	{
+		return true;
+	}
+	return false;
+}
 bool Student::operator <(Student *s) {
 	if(ID < s->ID) {
 		return true;
