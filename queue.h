@@ -1,7 +1,7 @@
 #ifndef GENQUEUE_H_
 #define GENQUEUE_H_
 #include <iostream>
-#include "listnode.h"
+#include "ListNode.h"
 using namespace std;
 
 template<typename T>
