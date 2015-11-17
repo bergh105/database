@@ -40,6 +40,34 @@ void Faculty::addToAdviseeList(int id) {
 	adviseeList->insertBack(id);
 }
 
+int Faculty::deleteFromAdviseeList(int id)
+{
+	if(!adviseeList.isEmpty()) 
+	{
+		return 0;
+	}
+	else
+	{
+		return adviseeList.remove(id)		
+		
+	}
+}
+
+int Faculty::deleteFromAdviseeList()
+{
+	//really just used with a loop to empty out an adviseeList 
+	if(!adviseeList.isEmpty()) 
+	{
+		return 0;
+	}
+	else
+	{
+		return adviseeList.removeFront()		
+		
+	}
+}
+
+
 //Operator Overloaders:
 bool Faculty::operator =(Faculty *fac) 
 {
