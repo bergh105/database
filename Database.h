@@ -2,6 +2,7 @@
 #include "BinaryTree.h"
 #include "Faculty.h"
 #include "Student.h"
+#include <string>
 
 using namespace std;
 
@@ -11,8 +12,8 @@ class Database
 		Database();
 		~Database();
 		
-		BinarySearchTree<Student*> *studentTable;
-		BinarySearchTree<Faculty*> *facultyTable;
+		BinarySearchTree<Student> *studentTable;
+		BinarySearchTree<Faculty> *facultyTable;
 	
 		void PrintAllStu();
 		void PrintAllFac();
