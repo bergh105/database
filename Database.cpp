@@ -1,6 +1,10 @@
 #include <iostream>
 #include <stdlib.h>
+#include <string>
 #include "Database.h"
+#include "Student.h"
+#include "Faculty.h"
+#include "BinaryTree.h"
 
 using namespace std
 
