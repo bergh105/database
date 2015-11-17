@@ -1,6 +1,7 @@
 #ifndef BINARYTREE_H_
 #define BINARYTREE_H_
 #include <iostream>
+#include "queue.h"
 
 using namespace std;
 
@@ -42,14 +43,12 @@ public:
 
 	int size;
 	bool contains(T d);
-	int search(int d);
 	void add(T d);
 	void addHelper(T d, TreeNode<T>*& n);
 	bool remove(T d);
 	TreeNode<T>* getSuccessor(TreeNode<T>* d);
 	T getMin();
 	T getMax();
-	int getSize();
 	void print();
 	void printHelper(TreeNode<T> *node);
 
@@ -75,44 +74,28 @@ bool BinarySearchTree<T>::contains(T d) {
 }
 
 template <typename T>
-T BinarySearchTree<T>::search(int d) 
-{
-	foundNode = NULL;
-	TreeNode<T> *current = root;
-	while(current != NULL) {
-		if (d > current->data.getID())
-		{	
-			current = current -> right;
-		}	
-		else if(d < current->data.getID())
-		{
-			current = current -> left;
-		}	
-		else 
-		{
-			current = foundNode;
-			break;
-		}
-	}
-	return foundNode; 
-
-}
-
-template <typename T>
 void BinarySearchTree<T>::print() {
-	cout << "inside print" << endl;
+	cout << "PRINT FUNCTION:" << endl;
 	if(root != NULL)
 		printHelper(root);
 }
 
 template <typename T>
-void BinarySearchTree<T>::printHelper(TreeNode<T> *node) {
+void BinarySearchTree<T>::printHelper(TreeNode<T>* node) {
+	//cout << node->data << endl;
 	if(node->left != NULL)
+	{
+		cout << "go node->left" << endl;
 		printHelper(node->left);
-	if(node != NULL)
-		cout << "data here: " << node->data << endl;
-	if(node->right != NULL)
+	}
+	if(node != NULL) {
+		cout << "node not null" << endl;
+		cout << node->data << endl;
+	}
+	if(node->right != NULL) {
+		cout << "go node->right" << endl;
 		printHelper(node->right);
+	}
 }
 
 template <typename T>
@@ -133,32 +116,24 @@ T BinarySearchTree<T>::getMax() {
 	return current->data;
 }
 
-template <template T>
-int BinarySearchTree<T>::getSize()
-{
-	return size;
-}
-
 template<typename T>
 void BinarySearchTree<T>::add(T d) {
 	size++;
 	addHelper(d, root);
-	cout << root->data << endl; //does not think root exists....
 }
 
 template <typename T>
 void BinarySearchTree<T>::addHelper(T d, TreeNode<T>*& n) {
 	if(n == NULL) {
 		n = new TreeNode<T>(d);
-		cout << "n created" << endl;
-
-		cout << n->data->getName() << endl;
-		//n exists but root does not....
+		cout << "root set to " << d << endl;
 	}
 	else if(d > n->data) {
+		cout << " (ID # " << d.getID() << ") GREATER THAN (ID # " << n->data.getID() << ")" << endl;
 		addHelper(d, n->right);
 	}
 	else {
+		cout << "it was less" << endl;
 		addHelper(d, n->left);
 	}
 }
@@ -249,6 +224,35 @@ TreeNode<T>* BinarySearchTree<T>::getSuccessor(TreeNode<T>* d) {
 		successor->right = d->right;
 	}
 	return successor;
+}
+
+template <typename T>
+void BinarySearchTree<T>::serialize() {
+	GenQueue<T> *q;
+	TreeNode<T>* current = root;
+
+	q->insert(current);
+
+	while(!q.isEmpty()) {
+		current = q->remove();
+
+		if(current->left != NULL) {
+			q->insert(current->left);
+		}
+		if(current->right != NULL) {
+			q->insert(current->right);
+		}
+
+		//write to binary file:
+		/*
+		current->data.getName();
+		current->data.getID();
+		current->data.getGPA();
+		current->data.getLevel();
+		current->data.getMajor();
+		current->data.getAdvisor();
+		*/
+	}
 }
 
 #endif /* BINARYTREE_H_ */
