@@ -77,7 +77,7 @@ bool BinarySearchTree<T>::contains(T d) {
 
 template <typename T>
 T BinarySearchTree<T>::search(T d) {
-	T item = NULL;
+	T item;
 	TreeNode<T> *current = root;
 	while(current != NULL) {
 		if (d > current->data) {
@@ -87,7 +87,7 @@ T BinarySearchTree<T>::search(T d) {
 			current = current->left;
 		}
 		else {
-			item = current;
+			item = current->data;
 			break;
 		}
 	}
