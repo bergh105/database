@@ -27,6 +27,7 @@ public:
 	int getID();
 	string getLevel();
 	string getDepartment();
+	int getAdviseeListSize();
 
 	//mutators
 	void setName(string n);
@@ -35,7 +36,8 @@ public:
 	void setDepartment(string d);
 
 	void addToAdviseeList(int id);
-	void deleteFromAdviseeList(int id);
+	int deleteFromAdviseeList(int id);
+	int deleteFromAdviseeList();
 
 	//operator overloaders
 	bool operator <(const Faculty& s);
