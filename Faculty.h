@@ -35,14 +35,13 @@ public:
 	void setDepartment(string d);
 
 	void addToAdviseeList(int id);
-	int deleteFromAdviseeList(int id);
-	int deleteFromAdviseeList();
+	void deleteFromAdviseeList(int id);
 
 	//operator overloaders
-	bool operator =(Faculty *fac);
-	bool operator <(Faculty *fac); //const Faculty& fac
-	bool operator >(Faculty *fac);
-	friend ostream& operator <<(ostream& os, Faculty *obj); 
+	bool operator <(const Faculty& s);
+	bool operator >(const Faculty& s);
+	bool operator ==(const Faculty& s);
+	friend ostream& operator <<(ostream& os, Faculty obj); 
 
 private:
 	int ID;
