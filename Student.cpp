@@ -53,30 +53,31 @@ void Student::setAdvisor(int a) {
 }
 
 //Operator Overloaders:
-bool Student::operator =(Student *s) 
-{
-	if(ID = s->ID)
-	{
-		return true;
-	}
-	return false;
-}
-bool Student::operator <(Student *s) {
-	if(ID < s->ID) {
+bool Student::operator <(const Student& s) {
+	cout << "existing ID: " << ID << " current ID: " << s.ID << endl;
+	if(ID < s.ID) {
 		return true;
 	}
 	return false;
 }
 
-bool Student::operator >(Student *s) {
-	if(ID > s->ID) {
+bool Student::operator >(const Student& s) {
+	cout << "existing ID: " << ID << " current ID: " << s.ID << endl;
+	if(ID > s.ID) {
 		return true;
 	}
 	return false;
 }
 
-ostream& operator<<(ostream& os, Student *obj) { 
-	cout << obj->name << "\n" << obj->ID << "\n" << obj->GPA << "\n" << obj->level << "\n" << obj->major << "\n" << obj->advisor << endl;
+bool Student::operator ==(const Student& s) {
+	if(ID == s.ID) {
+		return true;
+	}
+	return false;
+}
+
+ostream& operator<<(ostream& os, Student obj) { 
+	cout << "name" << obj.getName() << "\n" << "id: " << obj.getID() << "\n" << obj.getGPA() << "\n" << obj.getLevel() << "\n" << obj.getMajor() << "\n" << obj.getAdvisor() << endl;
 	return os;
 }
 //doesn't actually work..
