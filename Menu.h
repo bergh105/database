@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Student.h"
 #include "Faculty.h"
+#include "Database.h"
+
 
 using namespace std;
 
@@ -13,5 +15,7 @@ class Menu
 		void printOptions();
 		int UserInputs();
 		void execute();
+		Database d;
+		string holder;
 
 };
