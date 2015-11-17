@@ -1,12 +1,12 @@
 #include <iostream>
 #include <stdlib.h>
 #include "Menu.h"
-//and all other stuff to be named
+#include "Database.h"
 
 using namespace std;
 Menu :: Menu()
 {
-
+	
 }
 Menu :: ~Menu()
 {
@@ -19,7 +19,7 @@ int Menu :: input()
 	string userIn;
 	int i;
 	getline(cin,userIn);
-	i = atoi (userIn.c_str);
+	i = atoi (userIn.c_str());
 	return i;
 
 }
@@ -65,33 +65,84 @@ void Menu :: execute()
 	switch(i)
 	{
 		case 1:
-		{}
+		{//print all students
+			d.PrintAllStu();
+		}
 		case 2:
-		{}
+		{//print all fac
+			d.PrintAllFac();
+		}
 		case 3:
-		{}
+		{
+		//find stu
+			cout<< "What is the ID number of the student you are looking for?" << endl;
+			getline(cin,holder);
+			d.FindStu(atoi(holder.c_str()));
+		}
 		case 4:
-		{}
+		{
+			cout<< "What is the ID number of the faculty you are looking for?" << endl;
+			getline(cin,holder);
+			d.FindFac(atoi(holder.c_str()));
+		}
 		case 5:
-		{}
+		{
+			cout<<"What is the student's ID number?"<<endl;
+			getline(cin,holder);
+			d.FindFacByStu(atoi(holder.c_str()));
+		}
 		case 6:
-		{}
+		{
+			cout << "What is the Faculty's ID number?" << endl;
+			getline(cin,holder);
+			d.FindStusByFac(atoi(holder.c_str()));
+		}
 		case 7:
-		{}
+		{
+			d.AddStu();
+		}
 		case 8:
-		{}
+		{
+			cout << "What is the student's ID number?" << endl;
+			getline(cin,holder);
+			d.DeleteStu(atoi(holder.c_str()));
+		}
 		case 9:
-		{}
+		{
+			d.AddFac();
+		}
 		case 10:
-		{}
+		{
+			cout << "What is the ID number of the faculty?" << endl;
+			string advTransfer;
+			getline(cin,holder);
+			cout << "What is the ID number of the faculty who is taking on the advisees?" << endl;
+			getline(cin,advTransfer);
+			d.DeleteFac(atoi(holder.c_str()),atoi(advTransfer.c_str()));
+		}
 		case 11:
-		{}
+		{
+			string facID;
+			cout << "What is the ID number of the student?" << endl;
+			getline(cin,holder);
+			cout << "What is the ID number of their new advisor?" << endl;
+			getline(cin,facID);
+			d.ChangeStuAdvisor(atoi(holder.c_str()),atoi(facID.c_str()));
+		}
 		case 12:
-		{}
+		{
+			cout << "What is the ID number of the student?" << endl;	
+			getline(cin,holder);
+			d.RemoveAdvisee(atoi(holder.c_str()));
+		}
 		case 13:
-		{}
+		{
+			//ROLLBACK
+		}
 		case 14:
-		{}
+		{
+			//SAVE AND EXIT
+		}
 		default:
 		{
 			execute();		
@@ -99,5 +150,12 @@ void Menu :: execute()
 	}
 
 }
+
+
+
+
+
+
+
 
 
