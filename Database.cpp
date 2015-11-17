@@ -159,8 +159,11 @@ int Database :: DeleteFac(int facID, advTransferID)
 	// them to another faculty member
 	F = facultyTable->search(facID);
 	facultyTable->remove(F);
-	//advTransfer = facultyTable->search(advTransferID);
-	//find one ID front F advisee list
+	advTransfer = facultyTable->search(advTransferID);
+	while(F->getAdviseeListSize() != 0)
+	{
+		advTransfer->addToAdviseeList(F->deleteFromAdviseeList());
+	}	
 	ChangeStuAdvisor(frontID, advTransferID);
 	facultyTable->remove();
 	return 1;
