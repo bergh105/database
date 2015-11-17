@@ -10,9 +10,9 @@ using namespace std
 
 Database :: Database()
 {
-	studentTable = new BinarySearchTree<Student*>();
+	studentTable = new BinarySearchTree<Student>();
 
-	facultyTable = new BinarySearchTree<Faculty*>();
+	facultyTable = new BinarySearchTree<Faculty>();
 }
 
 Database :: ~Database()
@@ -23,7 +23,7 @@ Database :: ~Database()
 void Database :: PrintAllStu()
 {
 	// Runs through and prints students in order of ID# least to greatest
-	if (studentTable.getSize() = 0)
+	if (studentTable->getSize() = 0)
 	{
 		cout << "you dont have any students" << endl;
 	}
@@ -36,7 +36,7 @@ void Database :: PrintAllStu()
 void Database :: PrintAllFac()
 {
 	// Runs through and prints faculty in order of ID# least to greatest
-	if (facultyTable.getSize() = 0)
+	if (facultyTable->getSize() = 0)
 	{
 		cout << "This is mayhem there are no advisors"
 	}
@@ -50,7 +50,8 @@ int Database :: FindStu(int stuID)
 {
 	// Finds a student by their ID #
 	s = studentTable->search(stuID);
-	operator << (cout,s);
+	cout << s << endl; //fixed operator overloaders, this should work now. if not, use next line
+	//operator << (cout,s);
 	
 }
 
@@ -58,7 +59,8 @@ int Database :: FindFac(int facID)
 {
 	//Finds a Faculty by their ID#
 	f = facultyTable->search(facID);
-	operator << (cout, f);
+	cout << f << endl; //fixed overloader, this should work now
+	//operator << (cout, f);
 }
 
 int Database :: AddStu()
@@ -93,10 +95,9 @@ int Database :: AddStu()
 	getline(cin,holder);
 	advID = atoi(holder.c_str());
 	
-	Student *s = new Student(stuName, stuID, stuGPA, stuYear, stuMajor, advID);
+	//Student *s = new Student(stuName, stuID, stuGPA, stuYear, stuMajor, advID);
+	Student s(stuName, stuID, stuGPA, stuYear, stuMajor, advID); // because cant be a BST of pointers anymore
 	studentTable->add(s);
-	cout << "hey (after add)" << endl; //will add s, but will not make s the root.............
-	studentTable->print();
 	return 1;
 	//Rollback
 }
@@ -104,7 +105,7 @@ int Database :: AddStu()
 int Database :: DeleteStu(int stuID)
 {
 	// finds a student by their ID number and deletes them from the tree
-	s = studentTable -> search(stuID);
+	s = studentTable->search(stuID);
 	studentTable->remove(s);
 	return 1;
 	//Rollback
@@ -145,17 +146,16 @@ int Database :: AddFac()
 	}
 	
 	
-	Faculty *f = new Faculty(facName, facID, facLevel, facDepartment, adviseeList);
+	//Faculty *f = new Faculty(facName, facID, facLevel, facDepartment, adviseeList);
+	Faculty f(facName, facID, facLevel, facDepartment, adviseeList);
 	facultyTable->add(f);
-	cout << "hey (after add)" << endl; //will add s, but will not make s the root.............
-	facultyTable->print();
 	return 1;
 	//Rollback
 }
 
 int Database :: DeleteFac(int facID, advTransferID)
 {
-	// finds a faculty by their ID # and deletes them form the tree, takes there advisees and gives
+	// finds a faculty by their ID # and deletes them from the tree, takes their advisees and gives
 	// them to another faculty member
 	F = facultyTable->search(facID);
 	facultyTable->remove(F);
