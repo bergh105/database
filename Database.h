@@ -8,7 +8,7 @@ using namespace std;
 
 class Database
 {
-	Public:
+	public:
 		Database();
 		~Database();
 		
@@ -19,12 +19,14 @@ class Database
 		void PrintAllFac();
 		int FindStu(int iD);
 		int FindFac(int iD);
+		int FindFacByStu(int stuID);
+		int FindStusByFac(int facID);
 		int AddStu();
 		int DeleteStu(int iD);
 		int AddFac();
-		int DeleteFac(int iD);
+		int DeleteFac(int iD, int advTransferID);
 		int ChangeStuAdvisor(int stuID, int facID);
-		int RemoveAdvisee(int stuID, int facID)
+		int RemoveAdvisee(int stuID);
 		int Rollback();
 		int Exit();
 
