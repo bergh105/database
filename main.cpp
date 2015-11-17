@@ -8,8 +8,8 @@ using namespace std;
 
 int main() {
 
-	cout << "Here see a main method in its natural habitit." << endl;
-
+	cout << "Here we have the main function." << endl;
+/*
 	Student *s = new Student();
 
 	s->setName("Kelly");
@@ -23,11 +23,19 @@ int main() {
 
 	Student *s2 = new Student("Adrienne", 7, 4.0, "Junior", "CIS", 45);
 
-	cout << s->operator<(s2) << endl; //this is how you have to call the operator overloader
+	cout << s->operator<(s2) << endl; // < overloader
 
-	//Database *d = new Database();
+	operator<<(cout, s); // << overloader
+*/
+	Database *d = new Database();
 
-	//d->AddStu();
+	d->AddStu();
+	d->AddStu();
+	d->AddStu();
+
+	d->PrintAllStu();
+
+	delete d;
 	
 	return 0;
 }
