@@ -53,7 +53,7 @@ public:
 	int getSize();
 	void print();
 	void printHelper(TreeNode<T> *node);
-
+	GenQueue<TreeNode<T>*>* bfs(); //breadth-first search
 };
 
 template <typename T>
@@ -282,6 +282,31 @@ void BinarySearchTree<T>::serialize() {
 		current->data.getAdvisor();
 		*/
 	}
+}
+
+//breadth-first search returns a queue of nodes within BST in hierarchical order
+template <typename T>
+GenQueue<TreeNode<T>*>* BinarySearchTree<T>::bfs() {
+
+	GenQueue<TreeNode<T>*> *temp = new GenQueue<TreeNode<T>*>();
+	GenQueue<TreeNode<T>*> *q = new GenQueue<TreeNode<T>*>();
+	TreeNode<T>* current = root;
+
+	temp->insert(current);
+
+	while(!temp->isEmpty()) {
+		current = temp->remove();
+		//cout << "current data to add to q: " << current->data << endl;
+		q->insert(current);
+
+		if(current->left != NULL) {
+			temp->insert(current->left);
+		}
+		if(current->right != NULL) {
+			temp->insert(current->right);
+		}
+	}
+	return q;
 }
 
 #endif /* BINARYTREE_H_ */
