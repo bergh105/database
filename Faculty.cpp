@@ -20,6 +20,11 @@ string Faculty::getDepartment() {
 	return department;
 }
 
+int Faculty :: getAdviseeListSize()
+{
+	return adviseeList.getSize();
+}
+
 void Faculty::setName(string n) {
 	name = n;
 }
@@ -40,6 +45,31 @@ void Faculty::addToAdviseeList(int id) {
 	adviseeList->insertBack(id);
 }
 
+int Faculty:: deleteFromAdviseeList(int id)
+{
+	if(adviseeList.getSize()==0)
+	{
+		return 0;
+	}	
+	else
+	{
+		return adviseeList->remove(id);
+	}
+
+}
+
+int Faculty:: deleteFromAdviseeList()
+{
+	if(adviseeList.getSize()==0)
+	{
+		return 0;
+	}	
+	else
+	{
+		return adviseeList->removeFront();
+	}
+}
+
 //Operator Overloaders:
 bool Faculty::operator <(const Faculty& fac) {
 	if(ID > fac.ID) {
@@ -55,12 +85,20 @@ bool Faculty::operator >(const Faculty& fac) {
 	return false;
 }
 
-bool Student::operator ==(const Faculty& fac) {
+bool Faculty::operator ==(const Faculty& fac) {
 	if(ID == fac.ID) {
 		return true;
 	}
 	return false;
 }
+
+bool Faculty::operator !=(const Faculty& fac) {
+	if(ID != fac.ID) {
+		return true;
+	}
+	return false;
+}
+
 
 ostream& operator<<(ostream& os, Faculty *obj) {
 	cout << obj->name << "\n" << obj->ID << "\n" << obj->level << "\n" << obj->department << endl;
