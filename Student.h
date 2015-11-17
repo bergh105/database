@@ -46,6 +46,7 @@ public:
 	bool operator <(const Student& s);
 	bool operator >(const Student& s);
 	bool operator ==(const Student& s);
+	bool operator !=(const Student& s);
 	friend ostream& operator<<(ostream& os, Student obj); //const Student& obj
 
 private:
