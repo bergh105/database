@@ -35,7 +35,8 @@ public:
 	void setDepartment(string d);
 
 	void addToAdviseeList(int id);
-	void deleteFromAdviseeList(int id);
+	int deleteFromAdviseeList(int id);
+	int deleteFromAdviseeList();
 
 	//operator overloaders
 	bool operator =(Faculty *fac);
