@@ -43,6 +43,7 @@ public:
 	bool operator <(const Faculty& s);
 	bool operator >(const Faculty& s);
 	bool operator ==(const Faculty& s);
+	bool operator !=(const Faculty& s);
 	friend ostream& operator <<(ostream& os, Faculty obj); 
 
 private:
