@@ -1,3 +1,5 @@
+#ifndef DATABASE_H_
+#define DATABASE_H_
 #include <iostream>
 #include "BinaryTree.h"
 #include "Faculty.h"
@@ -31,3 +33,5 @@ class Database
 		int Exit();
 
 };
+
+#endif
