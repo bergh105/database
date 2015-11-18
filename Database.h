@@ -34,5 +34,11 @@ class Database
 		int RemoveAdvisee(int stuID);
 		int Rollback();
 		int Exit();
-
+		
+		void serializeStudents(string outFile);
+		//void serializeFaculty(string outFile);
+		void bfsS();
+		void bfsF();
+		BinarySearchTree<Student>* deserializeStudents(string inFile);
+		//BinarySearchTree<Faculty>* deserializeFaculty(string inFile);
 };
