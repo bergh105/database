@@ -5,14 +5,16 @@
 #include "Student.h"
 #include "Faculty.h"
 #include "BinaryTree.h"
+#include "GenStack.h"
 
 using namespace std;
 
 Database :: Database()
 {
 	studentTable = new BinarySearchTree<Student>();
-
+	studentRollStack = new GenStack<BinarySearchTree<Student>>(5);
 	facultyTable = new BinarySearchTree<Faculty>();
+	facultyRollStack = new GenStack<BinarySearchTree<Faculty>(5);
 }
 
 Database :: ~Database()
@@ -102,6 +104,10 @@ int Database :: FindStusByFac(int facID)
 int Database :: AddStu()
 {
 	//creates a new student and adds them to the BST
+	studentRollStack.push(studentTable);
+	facultyRollStack.push(facultyTable); // rollback
+
+
 	string holder;
 	string stuName;
 	int stuID;
@@ -134,6 +140,7 @@ int Database :: AddStu()
 	//Student *s = new Student(stuName, stuID, stuGPA, stuYear, stuMajor, advID);
 	Student s(stuName, stuID, stuGPA, stuYear, stuMajor, advID); // because cant be a BST of pointers anymore
 	studentTable->add(s);
+	ChangeStudentAdvisor(stuID, advID);
 	return 1;
 	//Rollback
 }
@@ -143,6 +150,10 @@ int Database :: AddStu()
 int Database :: DeleteStu(int stuID)
 {
 	// finds a student by their ID number and deletes them from the tree
+
+	studentRollStack.push(studentTable);
+	facultyRollStack.push(facultyTable); // rollback
+	
 	Student s; 
 	s.setID(stuID);
 	Student S = studentTable->search(s);
@@ -156,6 +167,10 @@ int Database :: DeleteStu(int stuID)
 int Database :: AddFac()
 {
 	//creates a new faculty and adds them to the BST
+
+	studentRollStack.push(studentTable);
+	facultyRollStack.push(facultyTable); // rollback
+
 	string holder;
 	string facName;
 	int facID;
@@ -183,6 +198,7 @@ int Database :: AddFac()
 	while(getline(cin,holder))
 	{
 		adviseeID = atoi(holder.c_str());
+		ChangeStudentAdivor(adviseeID, facID);
 		adviseeList->insertFront(adviseeID);
 				
 	}
@@ -199,6 +215,10 @@ int Database :: DeleteFac(int facID, int advTransferID)
 {
 	// finds a faculty by their ID # and deletes them from the tree, takes their advisees and gives
 	// them to another faculty member
+
+	studentRollStack.push(studentTable);
+	facultyRollStack.push(facultyTable); // rollback
+
 	Faculty f;
 	f.setID(facID);
 	Faculty F = facultyTable->search(f);
@@ -220,6 +240,10 @@ int Database :: DeleteFac(int facID, int advTransferID)
 int Database :: RemoveAdvisee(int stuID)
 {
 	//finds a student by ID, removes them from their advisor
+
+	studentRollStack.push(studentTable);
+	facultyRollStack.push(facultyTable); // rollback
+
 	Student s; 
 	s.setID(stuID);
 	Student S = studentTable->search(s);
@@ -237,9 +261,14 @@ int Database :: ChangeStuAdvisor(int stuID, int facID)
 {
 	//finds a student by ID, removes student from their advisor, finds a new advisor by ID,
 	//adds the student to the new advisor 
+
+	studentRollStack.push(studentTable);
+	facultyRollStack.push(facultyTable); // rollback
+
 	Student s; 
 	s.setID(stuID);
 	Student S = studentTable->search(s);
+	
 	Faculty f;
 	f.setID(S.getAdvisor());
 	Faculty newF = facultyTable->search(f);
@@ -248,6 +277,7 @@ int Database :: ChangeStuAdvisor(int stuID, int facID)
 		RemoveAdvisee(stuID);
 		
 	}
+	S.setAdvisor(facID);
 	newF.addToAdviseeList(stuID);
 	
 	// if the student has no advisor, it skips the second step
@@ -260,6 +290,16 @@ int Database :: ChangeStuAdvisor(int stuID, int facID)
 int Database :: Rollback()
 {
 	// takes back the last action that changed the tree up to five times
+	if(!studentRollStack.isEmpty())
+	{
+		studentTable = studentRollStack.pop();
+		facultyTable = facultyRollStack.pop();
+	}
+	else
+	{
+		cout << "Rollback unavaialbe, either you haven't changed anything or you really screwed up" << endl;
+
+	}
 
 }
 
