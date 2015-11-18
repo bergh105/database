@@ -307,3 +307,128 @@ int Database :: Exit()
 {
 	//maybe not needed here, could do this in Menu with break
 }
+
+void Database::serializeStudents(string outFile) {
+	ofstream myfile(outFile, ios::out | ios::trunc | ios::binary);
+
+	if (!myfile.is_open()) {
+		cout << "Error opening file." << endl;
+	}
+	else {
+		GenQueue<TreeNode<Student>*> *q;
+		q = studentTable->bfs();
+
+		TreeNode<Student>* current;
+
+		while(!q->isEmpty()) {
+			cout << "begin while loop" << endl;
+			//access first Node in queue
+			current = q->remove();
+
+			//write Student attributes from current node (from front of queue) to binary file
+			//write string to match read string
+			unsigned len;
+
+			string n = current->data.getName();
+			cout << "write attr to file:" << endl;
+			len = n.size();
+			myfile.write(reinterpret_cast<const char*>(&len), sizeof(len));
+			myfile.write(n.c_str(), len);
+
+			int i = current->data.getID();
+			cout << "write attr to file:" << endl;
+			myfile.write(reinterpret_cast<const char*>(&i), sizeof(int));
+
+			double g = current->data.getGPA();
+			cout << "write attr to file:" << endl;
+			myfile.write(reinterpret_cast<const char*>(&g), sizeof(double));
+
+			string l = current->data.getLevel();
+			cout << "write attr to file:" << endl;
+			len = l.size();
+			myfile.write(reinterpret_cast<const char*>(&len), sizeof(len));
+			myfile.write(l.c_str(), len);
+
+			string m = current->data.getMajor();
+			cout << "write attr to file:" << endl;
+			len = m.size();
+			myfile.write(reinterpret_cast<const char*>(&len), sizeof(len));
+			myfile.write(m.c_str(), len);
+
+			int a = current->data.getAdvisor();
+			cout << "write attr to file:" << endl;
+			myfile.write(reinterpret_cast<const char*>(&a), sizeof(int));
+		}
+		
+		myfile.close();
+	}
+}
+
+BinarySearchTree<Student>* Database::deserializeStudents(string inFile) {
+	studentTable = new BinarySearchTree<Student>();
+	ifstream file(inFile, ios::in | ios::binary);
+
+	if(!file.is_open()) {
+		cout << "error opening file." << endl;
+	}
+	else {
+		cout << "deserialize:" << endl;
+		// THE CODE REPEATS THE WHILE LOOP one extra time, without inputting any of the strings only numbers. while loop runs 4x
+		int c = file.peek();
+		while(c != EOF) { 
+			string tName, tLevel, tMajor;
+			int tID, tAdv;
+			double tGPA;
+			cout << "read in & add to studentTable -- name, id, gpa, level, major, advisor id: " << endl;
+			//get length of name string in file -- file.read((char*)&tName, sizeof(string));
+			unsigned len;
+			file.read(reinterpret_cast<char*>(&len), sizeof(len));
+			if(len >0){
+				char* buffer = new char[len];
+				file.read(buffer, len);
+				tName.append(buffer, len);
+				delete[] buffer;
+			}
+			cout << tName << ", ";
+
+			file.read((char*)&tID, sizeof(int));
+			cout << tID << ", ";
+			file.read((char*)&tGPA, sizeof(double));
+			cout << tGPA << ", ";
+
+			
+			file.read(reinterpret_cast<char*>(&len), sizeof(len));
+			if(len >0){
+				char* buffer = new char[len];
+				file.read(buffer, len);
+				tLevel.append(buffer, len);
+				delete[] buffer;
+			}
+			cout << tLevel << ", ";
+
+			
+			file.read(reinterpret_cast<char*>(&len), sizeof(len));
+			if(len >0){
+				char* buffer = new char[len];
+				file.read(buffer, len);
+				tMajor.append(buffer, len);
+				delete[] buffer;
+			}
+			cout << tMajor << ", ";
+
+			file.read((char*)&tAdv, sizeof(int));
+			cout << tAdv << endl;
+
+			Student s(tName, tID, tGPA, tLevel, tMajor, tAdv);
+			//make sure that the program initializes studentTable to empty every time so that
+			//this function does not just add the same students in again, but reloads the old table.
+			studentTable->add(s);
+			c = file.peek();
+		}
+	}
+	file.close();
+
+	cout << "new student table: " << endl;
+	studentTable->print();
+	return studentTable;
+}
