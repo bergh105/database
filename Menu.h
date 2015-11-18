@@ -1,3 +1,5 @@
+#ifndef DATABASE_H_
+#define DATABASE_H_
 #include <iostream>
 #include "Student.h"
 #include "Faculty.h"
@@ -19,3 +21,6 @@ class Menu
 		string holder;
 
 };
+
+
+#endif
