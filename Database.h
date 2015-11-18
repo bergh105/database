@@ -2,6 +2,7 @@
 #define DATABASE_H_
 #include <iostream>
 #include "BinaryTree.h"
+#include "GenStack.h"
 #include "Faculty.h"
 #include "Student.h"
 #include <string>
@@ -16,6 +17,8 @@ class Database
 		
 		BinarySearchTree<Student> *studentTable;
 		BinarySearchTree<Faculty> *facultyTable;
+		GenStack<BinarySearchTree<Student>> *studentRollStack;
+		GenStack<BinarySearchTree<Faculty>> *facultyRollStack;
 	
 		void PrintAllStu();
 		void PrintAllFac();
@@ -33,5 +36,3 @@ class Database
 		int Exit();
 
 };
-
-#endif
