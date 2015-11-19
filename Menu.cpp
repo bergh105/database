@@ -51,49 +51,69 @@ int Menu::UserInputs() {
 	}	
 
 }
-/*
+
 void Menu::execute() {
 	// each case refers to a different action, call appropriate methods
 	int i = UserInputs();
 	switch(i) {
-		case 1: //print all students
+		case 1:
+		{ //print all students
 			d.PrintAllStu();
 			break;
+		}
 		case 2: //print all fac
+		{			
 			d.PrintAllFac();
 			break;
+		}		
+
 		case 3: //find stu
+		{
 			cout<< "What is the ID number of the student you are looking for?" << endl;
 			getline(cin,holder);
 			d.FindStu(atoi(holder.c_str()));
 			break;
+		}
 		case 4:
+		{
 			cout<< "What is the ID number of the faculty you are looking for?" << endl;
 			getline(cin,holder);
 			d.FindFac(atoi(holder.c_str()));
 			break;
+		}
 		case 5:
+		{
 			cout<<"What is the student's ID number?"<<endl;
 			getline(cin,holder);
 			d.FindFacByStu(atoi(holder.c_str()));
 			break;
+		}
 		case 6:
+		{
 			cout << "What is the Faculty's ID number?" << endl;
 			getline(cin,holder);
 			d.FindStusByFac(atoi(holder.c_str()));
 			break;
-		case 7:
+		}
+		case 7:	
+		{
 			d.AddStu();
 			break;
+		}
 		case 8:
+		{
 			cout << "What is the student's ID number?" << endl;
 			getline(cin,holder);
 			d.DeleteStu(atoi(holder.c_str()));
 			break;
+		}
 		case 9:
+		{
 			d.AddFac();
 			break;
+		}
 		case 10:
+		{
 			cout << "What is the ID number of the faculty?" << endl;
 			string advTransfer;
 			getline(cin,holder);
@@ -101,7 +121,9 @@ void Menu::execute() {
 			getline(cin,advTransfer);
 			d.DeleteFac(atoi(holder.c_str()),atoi(advTransfer.c_str()));
 			break;
+		}
 		case 11:
+		{
 			string facID;
 			cout << "What is the ID number of the student?" << endl;
 			getline(cin,holder);
@@ -109,21 +131,30 @@ void Menu::execute() {
 			getline(cin,facID);
 			d.ChangeStuAdvisor(atoi(holder.c_str()),atoi(facID.c_str()));
 			break;
-		case 12:
+		}
+		case 12:	
+		{
 			cout << "What is the ID number of the student?" << endl;	
 			getline(cin,holder);
 			d.RemoveAdvisee(atoi(holder.c_str()));
 			break;
+		}
 		case 13:
-			//ROLLBACK
+		{
+			d.Rollback();
 			break;
+		}
 		case 14:
+		{
 			//SAVE AND EXIT
 			break;
+		}
 		default:
+		{
 			execute();		
 			break;
+		}
 	}
 
 }
-*/
+
