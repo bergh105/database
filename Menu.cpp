@@ -2,30 +2,27 @@
 #include <stdlib.h>
 #include "Menu.h"
 #include "Database.h"
+#include "Student.h"
+#include "Faculty.h"
 
 using namespace std;
-Menu :: Menu()
-{
-	//Database d = new Database()?
-}
-Menu :: ~Menu()
-{
 
+Menu::Menu() {
+	//d = new Database;
 }
 
+Menu :: ~Menu() {
+}
 
-int Menu :: input()
-{
+int Menu::input() {
 	string userIn;
 	int i;
 	getline(cin,userIn);
-	i = atoi (userIn.c_str());
+	i = atoi(userIn.c_str());
 	return i;
-
 }
 
-void Menu :: printOptions()
-{
+void Menu::printOptions() {
 	cout << " 1. Print all student and their information " << endl;
 	cout << " 2. Print all Faculty and their information " << endl;
 	cout << " 3. Find student by ID # " << endl;
@@ -44,84 +41,59 @@ void Menu :: printOptions()
 }
 
 
-int Menu :: UserInputs()
-{
+int Menu::UserInputs() {
 	cout << "choose an action from the above list" << endl;
 	int i = input();
 	if (i < 15 && i>0)
 		return i;
-	else
-	{
+	else {
 		UserInputs();
 	}	
 
 }
-
-void Menu :: execute()
-{
-
+/*
+void Menu::execute() {
 	// each case refers to a different action, call appropriate methods
 	int i = UserInputs();
-	switch(i)
-	{
-		case 1:
-		{//print all students
+	switch(i) {
+		case 1: //print all students
 			d.PrintAllStu();
 			break;
-		}
-		case 2:
-		{//print all fac
+		case 2: //print all fac
 			d.PrintAllFac();
 			break;
-		}
-		case 3:
-		{
-		//find stu
+		case 3: //find stu
 			cout<< "What is the ID number of the student you are looking for?" << endl;
 			getline(cin,holder);
 			d.FindStu(atoi(holder.c_str()));
 			break;
-		}
 		case 4:
-		{
 			cout<< "What is the ID number of the faculty you are looking for?" << endl;
 			getline(cin,holder);
 			d.FindFac(atoi(holder.c_str()));
 			break;
-		}
 		case 5:
-		{
 			cout<<"What is the student's ID number?"<<endl;
 			getline(cin,holder);
 			d.FindFacByStu(atoi(holder.c_str()));
 			break;
-		}
 		case 6:
-		{
 			cout << "What is the Faculty's ID number?" << endl;
 			getline(cin,holder);
 			d.FindStusByFac(atoi(holder.c_str()));
 			break;
-		}
 		case 7:
-		{
 			d.AddStu();
 			break;
-		}
 		case 8:
-		{
 			cout << "What is the student's ID number?" << endl;
 			getline(cin,holder);
 			d.DeleteStu(atoi(holder.c_str()));
 			break;
-		}
 		case 9:
-		{
 			d.AddFac();
 			break;
-		}
 		case 10:
-		{
 			cout << "What is the ID number of the faculty?" << endl;
 			string advTransfer;
 			getline(cin,holder);
@@ -129,9 +101,7 @@ void Menu :: execute()
 			getline(cin,advTransfer);
 			d.DeleteFac(atoi(holder.c_str()),atoi(advTransfer.c_str()));
 			break;
-		}
 		case 11:
-		{
 			string facID;
 			cout << "What is the ID number of the student?" << endl;
 			getline(cin,holder);
@@ -139,38 +109,21 @@ void Menu :: execute()
 			getline(cin,facID);
 			d.ChangeStuAdvisor(atoi(holder.c_str()),atoi(facID.c_str()));
 			break;
-		}
 		case 12:
-		{
 			cout << "What is the ID number of the student?" << endl;	
 			getline(cin,holder);
 			d.RemoveAdvisee(atoi(holder.c_str()));
 			break;
-		}
 		case 13:
-		{
-			d.Rollback();
+			//ROLLBACK
 			break;
-		}
 		case 14:
-		{
 			//SAVE AND EXIT
 			break;
-		}
 		default:
-		{
-			execute();
-			break;		
-		}
+			execute();		
+			break;
 	}
 
 }
-
-
-
-
-
-
-
-
-
+*/
