@@ -18,7 +18,7 @@ public:
 	int UserInputs();
 	void execute();
 	string holder;
-	//Database *d;
+	Database d;
 
 };
 
