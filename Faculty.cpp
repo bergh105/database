@@ -4,18 +4,24 @@
 
 using namespace std;
 
-Faculty :: Faculty()
-{
-	name = ".";
+Faculty::Faculty() {
+	name = "";
 	ID = 0;
-	level = "Low";
-	department = "Comm";
-	
-	
+	level = "";
+	department = "";
 }
 
-Faculty :: ~Faculty()
-{}
+Faculty::Faculty(string n, int i, string l, string d, DLinkedList<int>* a) {
+	name = n;
+	ID = i;
+	level = l;
+	department = d;
+	adviseeList = a;
+}
+
+Faculty::~Faculty() {
+	
+}
 
 string Faculty::getName() {
 	return name;
@@ -33,9 +39,12 @@ string Faculty::getDepartment() {
 	return department;
 }
 
-int Faculty :: getAdviseeListSize()
-{
-	return adviseeList.getSize();
+DLinkedList<int>* Faculty::getAdviseeList() {
+	return adviseeList;
+}
+
+int Faculty::getAdviseeListSize() {
+	return adviseeList->getSize();
 }
 
 void Faculty::setName(string n) {
@@ -55,30 +64,20 @@ void Faculty::setDepartment(string d) {
 }
 
 void Faculty::addToAdviseeList(int id) {
-	adviseeList->insertBack(id);
+	adviseeList->insertFront(id);
 }
 
-int Faculty:: deleteFromAdviseeList(int id)
-{
-	if(adviseeList.getSize()==0)
-	{
-		return 0;
-	}	
-	else
-	{
-		return adviseeList->remove(id);
+void Faculty::deleteFromAdviseeList(int id) {
+	if(adviseeList->getSize()!=0){
+		adviseeList->remove(id);
 	}
-
 }
 
-int Faculty:: deleteFromAdviseeList()
-{
-	if(adviseeList.getSize()==0)
-	{
+int Faculty::deleteFromAdviseeList() {
+	if(adviseeList->getSize()==0) {
 		return 0;
-	}	
-	else
-	{
+	}
+	else {
 		return adviseeList->removeFront();
 	}
 }
@@ -112,9 +111,7 @@ bool Faculty::operator !=(const Faculty& fac) {
 	return false;
 }
 
-
 ostream& operator<<(ostream& os, Faculty obj) {
 	cout << obj.getName() << "\n" << obj.getID() << "\n" << obj.getLevel() << "\n" << obj.getDepartment() << endl;
 	return os;
 }
-//doesnt actually work..
