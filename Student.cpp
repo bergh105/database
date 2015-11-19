@@ -71,6 +71,7 @@ bool Student::operator >(const Student& s) {
 
 bool Student::operator ==(const Student& s) {
 	if(ID == s.ID) {
+		cout << "eureka!" << endl;
 		return true;
 	}
 	return false;
@@ -78,14 +79,13 @@ bool Student::operator ==(const Student& s) {
 
 bool Student::operator !=(const Student& s) {
 	if(ID != s.ID) {
+		cout << "FUCK! NOT EQUAL!" << endl;
 		return true;
 	}
 	return false;
 }
 
-
 ostream& operator<<(ostream& os, Student obj) { 
 	cout << "name" << obj.getName() << "\n" << "id: " << obj.getID() << "\n" << obj.getGPA() << "\n" << obj.getLevel() << "\n" << obj.getMajor() << "\n" << obj.getAdvisor() << endl;
 	return os;
 }
-//doesn't actually work..
