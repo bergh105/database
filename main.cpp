@@ -6,34 +6,44 @@
 
 using namespace std;
 
+bool exists(const string& name) {
+	ifstream infile(name);
+	return infile.good();
+}
+
 int main() {
 
-	cout << "Here we have the main function." << endl;
-/*
-	Student *s = new Student();
+	if( exists("studentTable.bin") ) {
+		cout << "Student table file already exists. Load data from previous use." << endl;
+		// deserialize()
+	}
+	else {
+		cout << "first time running program." << endl;
+		//create new database
+	}
+	if( exists("facultyTable.bin")) {
+		cout << "Faculty table file already exists. Load data from previous use" << endl;
+		// deserialize()
+	}
+	else {
+		cout << "no faculty file exists" << endl;
+		//create new database
+	}
 
-	s->setName("Kelly");
-	s->setLevel("Sophomore");
-	s->setGPA(4.0);
-	s->setID(3);
-	s->setAdvisor(3456);
-	s->setMajor("Communications");
-
-	cout << s->getName() << endl;
-
-	Student *s2 = new Student("Adrienne", 7, 4.0, "Junior", "CIS", 45);
-
-	cout << s->operator<(s2) << endl; // < overloader
-
-	operator<<(cout, s); // << overloader
-*/
 	Database *d = new Database();
 
 	d->AddStu();
 	d->AddStu();
 	d->AddStu();
 
-	d->PrintAllStu();
+	d->AddFac();
+	//d->AddFac();
+
+	d->serializeStudents("studentTable.bin");
+	d->deserializeStudents("studentTable.bin");
+
+	//d->serializeFaculty("facultyTable.bin");
+	//d->deserializeFaculty("facultyTable.bin");
 
 	delete d;
 	
