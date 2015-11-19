@@ -24,6 +24,7 @@ int Menu::input() {
 }
 
 void Menu::printOptions() {
+	cout << endl;
 	cout << " 1. Print all student and their information " << endl;
 	cout << " 2. Print all Faculty and their information " << endl;
 	cout << " 3. Find student by ID # " << endl;
@@ -38,6 +39,7 @@ void Menu::printOptions() {
 	cout << " 12. Remove a student from an advisor " << endl;
 	cout << " 13. Rollback " << endl;
 	cout << " 14. Exit " << endl;
+	cout << endl;
 
 }
 
@@ -63,6 +65,7 @@ void Menu::execute() {
 		case 1:
 		{ //print all students
 			d.PrintAllStu();
+			execute();
 			break;
 		}
 		case 2: //print all fac
@@ -111,6 +114,7 @@ void Menu::execute() {
 		case 7:	
 		{
 			d.AddStu();
+			execute();
 			break;
 		}
 		case 8:
