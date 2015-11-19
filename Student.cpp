@@ -54,7 +54,6 @@ void Student::setAdvisor(int a) {
 
 //Operator Overloaders:
 bool Student::operator <(const Student& s) {
-	cout << "existing ID: " << ID << " current ID: " << s.ID << endl;
 	if(ID < s.ID) {
 		return true;
 	}
@@ -62,7 +61,6 @@ bool Student::operator <(const Student& s) {
 }
 
 bool Student::operator >(const Student& s) {
-	cout << "existing ID: " << ID << " current ID: " << s.ID << endl;
 	if(ID > s.ID) {
 		return true;
 	}
