@@ -3,7 +3,7 @@
 #include "Menu.h"
 #include "Database.h"
 #include "Student.h"
-#include "Faculty.h"
+#include "Faculty.h" 
 
 using namespace std;
 
