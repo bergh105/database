@@ -12,13 +12,7 @@ public:
 
 	Faculty();
 
-	Faculty(string n, int i, string l, string d, DLinkedList<int>* a) {
-		name = n;
-		ID = i;
-		level = l;
-		department = d;
-		adviseeList = a;
-	}
+	Faculty(string n, int i, string l, string d, DLinkedList<int>* a); 
 
 	~Faculty();
 
@@ -28,6 +22,7 @@ public:
 	string getLevel();
 	string getDepartment();
 	int getAdviseeListSize();
+	DLinkedList<int>* getAdviseeList();
 
 	//mutators
 	void setName(string n);
@@ -36,7 +31,7 @@ public:
 	void setDepartment(string d);
 
 	void addToAdviseeList(int id);
-	int deleteFromAdviseeList(int id);
+	void deleteFromAdviseeList(int id);
 	int deleteFromAdviseeList();
 
 	//operator overloaders
@@ -51,7 +46,6 @@ private:
 	string name;
 	string level;
 	string department;
-	
 };
 
 #endif 
