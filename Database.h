@@ -25,9 +25,9 @@ class Database {
 		Faculty FindFac(int iD);
 		Faculty FindFacByStu(int stuID);
 		void FindStusByFac(int facID);
-		int AddStu();
+		void AddStu();
 		int DeleteStu(int iD);
-		int AddFac();
+		void AddFac();
 		int DeleteFac(int iD, int advTransferID);
 		int ChangeStuAdvisor(int stuID, int facID);
 		int RemoveAdvisee(int stuID);
@@ -35,11 +35,11 @@ class Database {
 		void Exit();
 		
 		void serializeStudents(string outFile);
-		//void serializeFaculty(string outFile);
+		void serializeFaculty(string outFile);
 		void bfsS();
 		void bfsF();
 		BinarySearchTree<Student>* deserializeStudents(string inFile);
-		//BinarySearchTree<Faculty>* deserializeFaculty(string inFile);
+		BinarySearchTree<Faculty>* deserializeFaculty(string inFile);
 };
 
 #endif /* DATABASE_H_ */ 
