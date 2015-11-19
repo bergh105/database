@@ -123,9 +123,7 @@ int Database::AddStu() {
 	//creates a new student and adds them to the BST
 	studentRollStack->push(studentTable);
 	facultyRollStack->push(facultyTable); // rollback
-	Student r;	
-	cout << studentTable->search(r);
-	cout << r.getName() << endl;
+
 	string holder, stuName, stuYear, stuMajor;
 	int stuID, advID;
 	double stuGPA;
