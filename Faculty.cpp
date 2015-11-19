@@ -113,8 +113,8 @@ bool Faculty::operator !=(const Faculty& fac) {
 }
 
 
-ostream& operator<<(ostream& os, Faculty *obj) {
-	cout << obj->name << "\n" << obj->ID << "\n" << obj->level << "\n" << obj->department << endl;
+ostream& operator<<(ostream& os, Faculty obj) {
+	cout << obj.getName() << "\n" << obj.getID() << "\n" << obj.getLevel() << "\n" << obj.getDepartment() << endl;
 	return os;
 }
 //doesnt actually work..
