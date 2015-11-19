@@ -1,5 +1,5 @@
-#ifndef DATABASE_H_
-#define DATABASE_H_
+#ifndef MENU_H_
+#define MENU_H_
 
 #include <iostream>
 #include "Student.h"
