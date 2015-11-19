@@ -6,12 +6,16 @@ using namespace std;
 
 Faculty :: Faculty()
 {
-	setName("John Doe");
-	setID(0);
-	setLevel("Dumby");
-	setDepartment("Comm");
+	name = "John Doe";
+	ID = 0;
+	level = "Low";
+	department = "Comm";
+	
 	
 }
+
+Faculty :: ~Faculty()
+{}
 
 string Faculty::getName() {
 	return name;
