@@ -6,7 +6,7 @@
 using namespace std;
 Menu :: Menu()
 {
-	
+	//Database d = new Database()?
 }
 Menu :: ~Menu()
 {
