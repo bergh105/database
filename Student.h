@@ -7,7 +7,7 @@ using namespace std;
 class Student {
 public:
 	Student() {
-		name = ".";
+		name = "";
 		ID = 0;
 		GPA = 0.0;
 		level = "";
