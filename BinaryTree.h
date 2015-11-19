@@ -2,6 +2,7 @@
 #define BINARYTREE_H_
 #include <iostream>
 #include "queue.h"
+#include <fstream>
 
 using namespace std;
 
@@ -42,6 +43,8 @@ public:
 	}
 
 	int size;
+	int getSize();
+	bool isEmpty();
 	bool contains(T d);
 	T search(T d);
 	void add(T d);
@@ -50,11 +53,21 @@ public:
 	TreeNode<T>* getSuccessor(TreeNode<T>* d);
 	T getMin();
 	T getMax();
-	int getSize();
 	void print();
 	void printHelper(TreeNode<T> *node);
 	GenQueue<TreeNode<T>*>* bfs(); //breadth-first search
+
 };
+
+template <typename T>
+int BinarySearchTree<T>::getSize() {
+	return size;
+}
+
+template <typename T>
+bool BinarySearchTree<T>::isEmpty() {
+	return (size==0);
+}
 
 template <typename T>
 bool BinarySearchTree<T>::contains(T d) {
@@ -96,9 +109,9 @@ T BinarySearchTree<T>::search(T d) {
 
 template <typename T>
 void BinarySearchTree<T>::print() {
-	cout << "PRINT FUNCTION:" << endl;
 	if(root != NULL)
 		printHelper(root);
+	cout << "end tree" << endl;
 }
 
 template <typename T>
@@ -106,15 +119,13 @@ void BinarySearchTree<T>::printHelper(TreeNode<T>* node) {
 	//cout << node->data << endl;
 	if(node->left != NULL)
 	{
-		cout << "go node->left" << endl;
 		printHelper(node->left);
 	}
 	if(node != NULL) {
-		cout << "node not null" << endl;
 		cout << node->data << endl;
+		cout << "that was one node's data" << endl;
 	}
 	if(node->right != NULL) {
-		cout << "go node->right" << endl;
 		printHelper(node->right);
 	}
 }
@@ -137,12 +148,6 @@ T BinarySearchTree<T>::getMax() {
 	return current->data;
 }
 
-template <typename T>
-int BinarySearchTree<T>::getSize()
-{
-	return size;
-}
-
 template<typename T>
 void BinarySearchTree<T>::add(T d) {
 	size++;
@@ -153,14 +158,11 @@ template <typename T>
 void BinarySearchTree<T>::addHelper(T d, TreeNode<T>*& n) {
 	if(n == NULL) {
 		n = new TreeNode<T>(d);
-		cout << "root set to " << d << endl;
 	}
 	else if(d > n->data) {
-		cout << " (ID # " << d.getID() << ") GREATER THAN (ID # " << n->data.getID() << ")" << endl;
 		addHelper(d, n->right);
 	}
 	else {
-		cout << "it was less" << endl;
 		addHelper(d, n->left);
 	}
 }
@@ -188,7 +190,7 @@ bool BinarySearchTree<T>::remove(T d){
 			return false;                
 	}  
 
-    //no children – this would be nice
+    //no children
 	if(current->left==NULL && current->right==NULL) {
 		if(current == root)
 			root = NULL;                 
@@ -198,7 +200,7 @@ bool BinarySearchTree<T>::remove(T d){
 			parent->right = NULL;
 	}
      
-    //one child – still not too bad
+    //one child
     // no right child, replace with left subtree
 	else if(current->right==NULL) {
 		if(current == root) 
@@ -251,37 +253,6 @@ TreeNode<T>* BinarySearchTree<T>::getSuccessor(TreeNode<T>* d) {
 		successor->right = d->right;
 	}
 	return successor;
-}
-
-
-
-template <typename T>
-void BinarySearchTree<T>::serialize() {
-	GenQueue<T> *q;
-	TreeNode<T>* current = root;
-
-	q->insert(current);
-
-	while(!q.isEmpty()) {
-		current = q->remove();
-
-		if(current->left != NULL) {
-			q->insert(current->left);
-		}
-		if(current->right != NULL) {
-			q->insert(current->right);
-		}
-
-		//write to binary file:
-		/*
-		current->data.getName();
-		current->data.getID();
-		current->data.getGPA();
-		current->data.getLevel();
-		current->data.getMajor();
-		current->data.getAdvisor();
-		*/
-	}
 }
 
 //breadth-first search returns a queue of nodes within BST in hierarchical order
