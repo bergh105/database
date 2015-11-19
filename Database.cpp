@@ -123,7 +123,9 @@ int Database::AddStu() {
 	//creates a new student and adds them to the BST
 	studentRollStack->push(studentTable);
 	facultyRollStack->push(facultyTable); // rollback
-
+	Student r;	
+	cout << studentTable->search(r);
+	cout << r.getName() << endl;
 	string holder, stuName, stuYear, stuMajor;
 	int stuID, advID;
 	double stuGPA;
@@ -175,6 +177,8 @@ int Database::DeleteStu(int stuID) {
 	Student s; 
 	s.setID(stuID);
 	Student S = studentTable->search(s);
+	if(S.getName().compare(".") == 1 )
+		return 0;
 	studentTable->remove(S);
 	RemoveAdvisee(stuID);
 	return 1;
@@ -231,6 +235,8 @@ int Database::DeleteFac(int facID, int advTransferID) {
 	Faculty f;
 	f.setID(facID);
 	Faculty F = facultyTable->search(f);
+	if(F.getName().compare(".") == 1 )
+		return 0;
 	facultyTable->remove(F);
 	f.setID(advTransferID);
 	Faculty advTransfer = facultyTable->search(f);
@@ -244,7 +250,7 @@ int Database::DeleteFac(int facID, int advTransferID) {
 	//Rollback
 }
 
-void Database::ChangeStuAdvisor(int stuID, int facID) {
+int Database::ChangeStuAdvisor(int stuID, int facID) {
 	//finds a student by ID, removes student from their advisor, finds a new advisor by ID,
 	//adds the student to the new advisor 
 
@@ -254,10 +260,13 @@ void Database::ChangeStuAdvisor(int stuID, int facID) {
 	Student s; 
 	s.setID(stuID);
 	Student S = studentTable->search(s);
-	
+	if(S.getName().compare(".") == 1 )
+		return 0;
 	Faculty f;
 	f.setID(S.getAdvisor());
 	Faculty newF = facultyTable->search(f);
+	if(newF.getName().compare(".") == 1 )
+		return 0;
 	if(S.getAdvisor() != 0)
 	{
 		RemoveAdvisee(stuID);
@@ -271,7 +280,7 @@ void Database::ChangeStuAdvisor(int stuID, int facID) {
 	//Rollback
 }
 
-void Database::RemoveAdvisee(int stuID) {
+int Database::RemoveAdvisee(int stuID) {
 	//finds a student by ID, removes them from their advisor
 
 	studentRollStack->push(studentTable);
@@ -280,10 +289,16 @@ void Database::RemoveAdvisee(int stuID) {
 	Student s; 
 	s.setID(stuID);
 	Student S = studentTable->search(s);
+	if(S.getName().compare(".") == 1 )
+		return 0;
 	Faculty f;
 	f.setID(S.getAdvisor());
 	Faculty F = facultyTable->search(f);
+	if(F.getName().compare(".") == 1 )
+		return 0;
 	Faculty oldF = facultyTable->search(F);
+	if(oldF.getName().compare(".") == 1 )
+		return 0;
 	oldF.deleteFromAdviseeList(stuID);
 	// is the faculty ID necessary?
 
