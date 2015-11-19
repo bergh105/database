@@ -83,9 +83,7 @@ bool Student::operator !=(const Student& s) {
 	return false;
 }
 
-
 ostream& operator<<(ostream& os, Student obj) { 
 	cout << "name" << obj.getName() << "\n" << "id: " << obj.getID() << "\n" << obj.getGPA() << "\n" << obj.getLevel() << "\n" << obj.getMajor() << "\n" << obj.getAdvisor() << endl;
 	return os;
 }
-//doesn't actually work..
