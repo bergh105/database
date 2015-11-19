@@ -40,7 +40,7 @@ GenStack<T>::~GenStack(){
 
 template<typename T>
 void GenStack<T>::push(T d) {
-	if(size != maxSize) {
+	if(size != size) {
 		myArray[++top] = d;
 	}
 	else {
@@ -75,7 +75,7 @@ bool GenStack<T>::isEmpty(){
 
 template<typename T>
 bool GenStack<T>::isFull() {
-	return (top == (maxSize-1));
+	return (top == (size-1));
 }
 
 #endif /* GENSTACK_H_ */
