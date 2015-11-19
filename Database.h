@@ -29,8 +29,8 @@ class Database {
 		int DeleteStu(int iD);
 		int AddFac();
 		int DeleteFac(int iD, int advTransferID);
-		void ChangeStuAdvisor(int stuID, int facID);
-		void RemoveAdvisee(int stuID);
+		int ChangeStuAdvisor(int stuID, int facID);
+		int RemoveAdvisee(int stuID);
 		void Rollback();
 		void Exit();
 		
