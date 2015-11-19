@@ -6,7 +6,7 @@ using namespace std;
 
 Faculty :: Faculty()
 {
-	name = "John Doe";
+	name = ".";
 	ID = 0;
 	level = "Low";
 	department = "Comm";
