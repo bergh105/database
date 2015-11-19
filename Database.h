@@ -42,3 +42,4 @@ class Database
 		BinarySearchTree<Student>* deserializeStudents(string inFile);
 		//BinarySearchTree<Faculty>* deserializeFaculty(string inFile);
 };
+#endif
