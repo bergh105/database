@@ -12,13 +12,7 @@ public:
 
 	Faculty();
 
-	Faculty(string n, int i, string l, string d, DLinkedList<int>* a) {
-		name = n;
-		ID = i;
-		level = l;
-		department = d;
-		adviseeList = a;
-	}
+	Faculty(string n, int i, string l, string d, DLinkedList<int>* a); 
 
 	~Faculty();
 
@@ -51,7 +45,6 @@ private:
 	string name;
 	string level;
 	string department;
-	
 };
 
 #endif 
