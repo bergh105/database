@@ -9,31 +9,30 @@
 
 using namespace std;
 
-class Database
-{
+class Database {
 	public:
 		Database();
 		~Database();
 		
 		BinarySearchTree<Student> *studentTable;
 		BinarySearchTree<Faculty> *facultyTable;
-		GenStack<BinarySearchTree<Student>> *studentRollStack;
-		GenStack<BinarySearchTree<Faculty>> *facultyRollStack;
+		GenStack<BinarySearchTree<Student>*> *studentRollStack;
+		GenStack<BinarySearchTree<Faculty>*> *facultyRollStack;
 	
 		void PrintAllStu();
 		void PrintAllFac();
-		int FindStu(int iD);
-		int FindFac(int iD);
-		int FindFacByStu(int stuID);
-		int FindStusByFac(int facID);
+		Student FindStu(int iD);
+		Faculty FindFac(int iD);
+		Faculty FindFacByStu(int stuID);
+		void FindStusByFac(int facID);
 		int AddStu();
 		int DeleteStu(int iD);
 		int AddFac();
 		int DeleteFac(int iD, int advTransferID);
 		int ChangeStuAdvisor(int stuID, int facID);
-		int RemoveAdvisee(int stuID);
-		int Rollback();
-		int Exit();
+		void RemoveAdvisee(int stuID);
+		void Rollback();
+		void Exit();
 		
 		void serializeStudents(string outFile);
 		//void serializeFaculty(string outFile);
@@ -42,4 +41,5 @@ class Database
 		BinarySearchTree<Student>* deserializeStudents(string inFile);
 		//BinarySearchTree<Faculty>* deserializeFaculty(string inFile);
 };
-#endif
+
+#endif /* DATABASE_H_ */ 
