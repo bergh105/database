@@ -258,7 +258,7 @@ void Database::ChangeStuAdvisor(int stuID, int facID) {
 	Faculty f;
 	f.setID(S.getAdvisor());
 	Faculty newF = facultyTable->search(f);
-	if(s.getAdvisor() != NULL)
+	if(S.getAdvisor() != 0)
 	{
 		RemoveAdvisee(stuID);
 		
