@@ -4,6 +4,15 @@
 
 using namespace std;
 
+Faculty :: Faculty()
+{
+	setName("John Doe");
+	setID(0);
+	setLevel("Dumby");
+	setDepartment("Comm");
+	
+}
+
 string Faculty::getName() {
 	return name;
 }
