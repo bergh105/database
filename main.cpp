@@ -15,7 +15,8 @@ int main() {
 
 	if( exists("studentTable.bin") ) {
 		cout << "Student table file already exists. Load data from previous use." << endl;
-		// deserialize()
+		//first action: create new database
+		//second action: deserialize() into that database
 	}
 	else {
 		cout << "first time running program." << endl;
@@ -37,15 +38,35 @@ int main() {
 	d->AddStu();
 
 	d->AddFac();
-	//d->AddFac();
 
-	d->serializeStudents("studentTable.bin");
-	d->deserializeStudents("studentTable.bin");
-
-	//d->serializeFaculty("facultyTable.bin");
+	//d->serializeStudents("studentTable.bin"); //this works
+	//d->deserializeStudents("studentTable.bin"); //this works
+	cout << "\n TEST serializeFaculty \n" << endl;
+	d->serializeFaculty("facultyTable.bin");
 	//d->deserializeFaculty("facultyTable.bin");
 
 	delete d;
 	
 	return 0;
 }
+
+/*
+
+#include <iostream>
+#include "Student.h"
+#include "Faculty.h"
+#include "BinaryTree.h"
+#include "Database.h"
+#include "Menu.h"
+
+using namespace std;
+
+int main() {
+
+	
+	Menu *m = new Menu();
+	m->execute();
+	
+	return 0;
+}
+*/
