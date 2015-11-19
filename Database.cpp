@@ -393,7 +393,7 @@ void Database::Exit() {
 
 
 void Database::serializeStudents(string outFile) {
-	ofstream myfile(outFile, ios::out | ios::trunc | ios::binary);
+	ofstream myfile(outFile.c_str(), ios::out | ios::trunc | ios::binary);
 
 	if (!myfile.is_open()) {
 		cout << "Error opening file." << endl;
@@ -449,7 +449,7 @@ void Database::serializeStudents(string outFile) {
 }
 
 void Database::serializeFaculty(string outFile) {
-	ofstream myfile(outFile, ios::out | ios::trunc | ios::binary);
+	ofstream myfile(outFile.c_str(), ios::out | ios::trunc | ios::binary);
 
 	if (!myfile.is_open()) {
 		cout << "Error opening file." << endl;
@@ -514,7 +514,7 @@ void Database::serializeFaculty(string outFile) {
 }
 
 BinarySearchTree<Student>* Database::deserializeStudents(string inFile) {
-	ifstream file(inFile, ios::in | ios::binary);
+	ifstream file(inFile.c_str(), ios::in | ios::binary);
 
 	if(!file.is_open()) {
 		cout << "error opening file." << endl;
@@ -581,7 +581,7 @@ BinarySearchTree<Student>* Database::deserializeStudents(string inFile) {
 }
 
 BinarySearchTree<Faculty>* Database::deserializeFaculty(string inFile) {
-	ifstream file(inFile, ios::in | ios::binary);
+	ifstream file(inFile.c_str(), ios::in | ios::binary);
 
 	if(!file.is_open()) {
 		cout << "error opening file." << endl;
