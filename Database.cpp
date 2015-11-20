@@ -99,15 +99,17 @@ void Database::FindStusByFac(int facID) {
 		Faculty f;
 		f.setID(facID);
 		Faculty F = facultyTable->search(f);
-		
-		int i = F.deleteFromAdviseeList();
-		if( i!=0){	
-			FindStu(i);
+		for (int j; j < F.getAdviseeListSize(); ++j)
+		{
+			int i = F.deleteFromAdviseeList();
+			if( i!=0){	
+				FindStu(i);
+			}
+			else{
+				cout << "there is an issue, that faculty has no advisees" << endl;
+			}
+			F.addToAdviseeList(i);
 		}
-		else{
-			cout << "there is an issue, that faculty has no advisees" << endl;
-		}
-		F.addToAdviseeList(i);
 	}
 }
 /*
