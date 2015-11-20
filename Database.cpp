@@ -107,9 +107,7 @@ void Database::FindStusByFac(int facID) {
 		else{
 			cout << "there is an issue, that faculty has no advisees" << endl;
 		}
-		while(i!=0){
-			FindStu(i);
-		}
+		F.addToAdviseeList(i);
 	}
 }
 /*
